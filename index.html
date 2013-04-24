@@ -1,0 +1,307 @@
+<!doctype html>
+<!--[if lte IE 7]> <html dir="ltr" lang="en-us" class="ie ie7 lte-ie9 lte-ie8 lte-ie7"> <![endif]-->
+<!--[if IE 8]> <html dir="ltr" lang="en-us" class="ie ie8 lte-ie9 lte-ie8"> <![endif]-->
+<!--[if IE 9]> <html dir="ltr" lang="en-us" class="ie ie9 lte-ie9"> <![endif]-->
+<!--[if !IE]><!--> <html dir="ltr" lang="en-us" class="not-ie"> <!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+	<title>Convert Photoshop Drop Shadows to CSS3 Box and Text Shadows</title>
+	<link rel="shortcut icon" href="favicon.ico">
+	<meta name="description" content="Convert your Photoshop drop shadows into CSS3 box and text shadows.">
+	<meta name="keywords" content="Adobe, Photoshop, Cascading Style Sheets, CSS, CSS3, HTML, HTML5, drop shadow, box shadow, text shadow, web standards, photo shop">
+	<script src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/convert-psd-to-css3.js"></script>
+
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "3e460cd8-2ba2-42c2-a074-631c62e986cc"}); </script>
+	<script type="text/javascript">
+/* <![CDATA[ */
+    (function() {
+        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+        t.parentNode.insertBefore(s, t);
+    })();
+/* ]]> */</script>
+	<script>
+	jQuery(document).ready(function($) {	
+		//detect for IE10
+		if ($.browser.msie && parseInt($.browser.version) > 9) {
+			$("html").addClass("ie gte-ie10");
+		}
+		function doMaths() {
+			var opacity = $('input[name="opacity"]').val();
+			var ang = $('input[name="angle"]').val();
+			var dist = $('input[name="distance"]').val();
+			var spread = $('input[name="spread"]').val();
+			var size = $('input[name="size"]').val();
+			var r = $('input[name="red"]').val();
+			var g = $('input[name="green"]').val();
+			var b = $('input[name="blue"]').val();
+			var ins = $('select[name="inset"]').val();
+
+			// convert opacity to number
+			var cssopacity = opacity / 100;
+				$('input[name="css-opacity"]').val(cssopacity);
+				$('.output .css-opacity').text(cssopacity);
+
+			// Angle == Θ
+			var ang = (180 - ang) * 3.14 / 180; //convert to radians.
+
+			// vertical shadow: offset-y = Sin(Θ) * Hypotenuse
+			var offsety = Math.round(Math.sin(ang) * dist); 
+			$('input[name="offset-y"]').val(offsety);
+			$('.output .offset-y').text(offsety);
+
+			// horizontal shadow: offset-x = Cos(Θ) * Hypotenuse
+			var offsetx = Math.round(Math.cos(ang) * dist); 
+			$('input[name="offset-x"]').val(offsetx);
+			$('.output .offset-x').text(offsetx);
+
+			//spread-radius equals the Photoshop Size multiplied by the Photoshop Spread percentage
+			var spreadrad = size * spread/100;
+			$('input[name="spread"]').val(spreadrad);
+			$('.output .spread-radius').text(spreadrad);
+
+			//blur-radius is equal to the Photoshop Size minus the <spread-radius>
+			var blurrad = size - spreadrad;
+			$('input[name="blur-radius"]').val(blurrad);
+			$('.output .blur-radius').text(blurrad);
+
+			//write color to code
+			$('.output .r').text(r);
+			$('.output .g').text(g);
+			$('.output .b').text(b);
+
+			if ($('input[name="inset"]:checked').val() == 'Yes') {	       
+				$('.output .css-inset').text(' inset').css('display','inline');
+			} else {
+				$('.output .css-inset').css('display','none');
+			}
+		};
+
+		function doCodes() {
+			var inset = $('input[name="inset"]:checked').val();
+			var offsetx = $('input[name="offset-x"]').val();
+			var offsety = $('input[name="offset-y"]').val();
+			var blurrad = $('input[name="blur-radius"]').val();
+			var spreadrad = $('input[name="spread"]').val();
+			var r = $('input[name="red"]').val();
+			var g = $('input[name="green"]').val();
+			var b = $('input[name="blue"]').val();
+			var cssopacity = $('input[name="css-opacity"]').val();
+			$('.output .offset-x').text(offsetx);
+			$('.output .offset-y').text(offsety);
+			$('.output .blur-radius').text(blurrad);
+			$('.output .spread-radius').text(spreadrad);
+			$('.output .r').text(r);
+			$('.output .g').text(g);
+			$('.output .b').text(b);
+			$('.output .css-opacity').text(cssopacity);
+			if ($('input[name="inset"]:checked').val() == 'Yes') {	       
+				$('.output .css-inset').text(' inset').css('display','inline');
+			} else {
+				$('.output .css-inset').css('display','none');
+			}
+		};
+
+		// Convert PSD settings to CSS3 and show output
+		$("form.from-ps").submit(function() {
+			doMaths();
+			$('.output .syntax').hide();
+			$('.output .generated').fadeIn();
+
+			$('.maths-txt').fadeIn(300, function() {
+	        	$('.maths-txt').fadeOut(1000);
+	      	});	 
+		  	return false;
+		});
+
+		//Reset all Forms
+		$('input[type="reset"]').click(function() {
+			$('.output .generated').hide();
+		  	$('.output .moz-generated').hide();
+		  	$('.output .webkit-generated').hide();
+		  	$('.output .o-generated').hide();
+		  	$('.updated').hide();
+			$('.output .syntax').fadeIn();
+			$('input[name="inset"][value="No"]').attr('checked', true);
+		  	$('input[name="offset-x"]').val("");
+		  	$('input[name="offset-y"]').val("");
+		  	$('input[name="spread-radius"]').val("");
+		  	$('input[name="blur-radius"]').val("");
+		  	$('input[name="css-opacity"]').val("");
+		  	$('input[name=add-moz]').attr('checked', false);
+		  	$('input[name=add-webkit]').attr('checked', false);
+		  	$('input[name=add-o]').attr('checked', false);
+		});
+
+		//Clear PSD Settings
+		$('input.clear').click(function() {
+			$('.output .generated').hide();
+			$('.output .syntax').fadeIn();
+			$('input[name="red"]').val("0");
+			$('input[name="green"]').val("0");
+			$('input[name="blue"]').val("0");
+			$('input[name="opacity"]').val("0");
+			$('input[name="angle"]').val("0");
+			$('input[name="distance"]').val("0");
+			$('input[name="spread"]').val("0");
+			$('input[name="size"]').val("0");
+		});
+
+		//watch for form changes
+		$('.watch').change(function() {
+			$('.updated').fadeIn();
+		});
+
+		// Update CSS Codes
+		$("form.css3-box-shadow").submit(function() {
+			doCodes();
+			$('.output .syntax').hide();
+			$('.output .generated').fadeIn();
+		  	return false;
+		});
+
+	});
+	</script>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div class="wrapper">
+	<div id="header">
+		<h1>Convert Photoshop Drop Shadows to CSS3 Box &amp; Text Shadows</h1>
+	</div>
+	<div id="about">
+		<h4>About</h4>
+		<p>This tool creates CSS3 Box Shadows based off of Photoshop Drop Shadow settings.  Based off of this <a href="http://heygrady.com/blog/2011/08/06/recreating-photoshop-drop-shadows-in-css3-and-compass/" target="_blank" title="Recreating Photoshop Drop Shadows in CSS3 and Compass">great article</a>, I decided to adapt it into this tool for the rest of us who still do things the "old school" way.</p>
+
+		<cite><a href="http://melaniededon.com">Melanie deDon</a><br /><small>Web Designer/Front-end Developer<br />Minneapolis, Minnesota</small></cite>
+		<hr />
+		<div class="update">
+			29 Jan 2013 Update
+			<ul>
+				<li>Now supports text shadows!
+				<li><a href="http://reference.sitepoint.com/css/vendorspecific" target="blank">Vendor prefixing</a> functionality removed.
+			</ul>
+		</div>
+
+	</div>
+	<form class="from-ps" method="post">
+		<fieldset>
+			<legend>Photoshop Drop Shadow Structure</legend>
+			<div>
+				<label>Color</label> 
+				<input type="text" name="red" value="0"> <span>R</span>
+			</div>
+			<div>
+				<label>&nbsp;</label> 
+				<input type="text" name="green" value="0"> <span>G</span>
+			</div>
+			<div>
+				<label>&nbsp;</label> 
+				<input type="text" name="blue" value="0"> <span>B</span>
+			</div>
+			<div>
+				<label>Opacity</label>
+				<input type="text" name="opacity" value="75"> <span>%</span>
+			</div>
+			<div>
+				<label>Angle</label>
+				<input type="text" name="angle" value="120"> <span>&deg;</span>
+			</div>
+			<div>
+				<label>Distance</label>
+				<input type="text" name="distance" value="5"> <span>px</span>
+			</div>
+			<div>
+				<label>Spread</label>
+				<input type="text" name="spread" value="0"> <span>%</span>
+			</div>
+			<div>
+				<label>Size</label>
+				<input type="text" name="size" value="5"> <span>px</span>
+			</div>
+			<div class="hubbinz">
+				<span class="maths-txt">Do all the Maths!</span>
+			</div>
+			<div class="buttons">
+				<input type="button" class="clear" value="Clear">
+				<input type="reset" value="PS Default">
+				<input type="submit" value="Convert to CSS3" class="maths">
+			</div>
+		</fieldset>
+	</form>
+
+	<form class="css3-box-shadow" method="post">
+		<fieldset>
+			<legend>CSS3 Syntax</legend>
+			<div>
+				<label>Inset?</label>
+				<span class="radio"><input class="watch" type="radio" name="inset" value="No" checked> No</span>
+				<span class="radio"><input class="watch" type="radio" name="inset" value="Yes"> Yes</span>
+			</div>
+			<div>
+				<label>Horizontal Length</label>
+				<input type="text" name="offset-x" class="watch"> <span>px</span>
+			</div>
+			<div>
+				<label>Vertical Length</label>
+				<input type="text" name="offset-y" class="watch"> <span>px</span>
+			</div>
+			<div>
+				<label>Blur Radius</label>
+				<input type="text" name="blur-radius" class="watch"> <span>px</span>
+			</div>
+			<div>
+				<label>Spread</label>
+				<input type="text" name="spread" class="watch"> <span>px</span>
+			</div>
+			<div>
+				<label>Opacity</label>
+				<input type="text" name="css-opacity" class="watch">
+			</div>
+			<div class="updated">
+				<input type="reset" value="Reset">
+				<input type="submit" value="Update CSS3 Code">
+			</div>
+		</fieldset>
+	</form>
+
+	<h3>CSS3 Code</h3>
+	<div class="output">
+		<span class="syntax">
+			box-shadow: offset-x offset-y blur-radius spread-radius rgba(0, 0, 0, opacity) inset; <br />
+			text-shadow: offset-x offset-y blur-radius rgba(0,0,0 opacity);
+		</span>
+		<span class="generated">
+			box-shadow: <span class="offset-x">offset-x</span>px <span class="offset-y">offset-y</span>px <span class="blur-radius">blur-radius</span>px <span class="spread-radius">spread-radius</span>px rgba(<span class="r">0</span>, <span class="g">0</span>, <span class="b">0</span>, <span class="css-opacity">opacity</span>)<span class="css-inset"> inset</span>; <br />
+			text-shadow: <span class="offset-x">offset-x</span>px <span class="offset-y">offset-y</span>px <span class="blur-radius">blur-radius</span>px rgba(<span class="r">0</span>, <span class="g">0</span>, <span class="b">0</span>, <span class="css-opacity">opacity</span>)<span class="css-inset"> inset</span>; <br />
+		</span>
+	</div>
+
+	<div class="share-this">
+		<span class='st_sharethis_hcount' displayText='ShareThis'></span>
+		<span class='st_facebook_hcount' displayText='Facebook'></span>
+		<span class='st_twitter_hcount' displayText='Tweet'></span>
+		<span class='st_linkedin_hcount' displayText='LinkedIn'></span>
+		<span class='st_email_hcount' displayText='Email'></span>
+	</div>
+	<div class="flattr">
+		<a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://melaniededon.com/psd-to-css3/"></a>
+		<noscript><a href="http://flattr.com/thing/1136929/Convert-Photoshop-Drop-Shadows-to-CSS3-Box-Text-Shadows" target="_blank">
+		<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a></noscript>
+	</div>
+
+
+	<div id="footer">
+		<a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nd/3.0/88x31.png" /></a> <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">Convert Photoshop to CSS3 Shadows</span> (v1) by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.melaniededon.com/psd-to-css3" property="cc:attributionName" rel="cc:attributionURL">Melanie deDon</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/">Creative Commons Attribution-NoDerivs 3.0 Unported License</a>.<br />Permissions beyond the scope of this license may be available at <a xmlns:cc="http://creativecommons.org/ns#" href="http://melaniededon.com/contact/" rel="cc:morePermissions">http://melaniededon.com/contact/</a>.
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,255 @@
+/*---------------------------------------------------------------- 	
+CSS for Photoshop to CSS3 Shadows
+Melanie deDon, Web Designer/Front-end Web Developer (melanie@dedon.me)  
+v1.0 | May 2012 
+------------------------------------------------------------------*/
+
+body {
+	background-color: #fff;
+}
+
+a {
+	color: #06c;
+}
+
+.wrapper {
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 20px;
+	background: #fff url('../img/logo.png') no-repeat top right;
+}
+
+@media all and (max-width: 815px) {
+  .wrapper {
+   	background-image: none;
+  }
+}
+
+fieldset, .output {
+	border-radius: 5px;
+}
+
+form {
+	float: left;
+}
+
+form.from-ps,
+form.css3-box-shadow {
+	width: 325px;
+	margin: 0 20px 20px 20px;
+}
+
+form > fieldset {
+	height: 370px;
+	border: 1px solid #28a9e0;
+}
+
+form > fieldset > legend {
+	font-weight: bold;
+	color: #2b64b4;
+}
+
+h1 {
+	margin-right: 200px;
+}
+
+h3 {
+	clear: both;
+	margin: 20px 20px 0 20px;
+	font-size: 1em;
+	color: #2b64b4;
+}
+
+h4 {
+	margin: 5px 0;
+}
+
+.output {
+	clear: both;
+	margin: 10px 20px;
+	padding: 20px;
+	background-color: #eaeaea;
+	border: 1px solid #28a9e0;
+}
+
+.hubbinz {
+	height: 20px;
+	text-align: right;
+	padding-right: 10px;
+}
+
+.maths-txt {
+	display: none;
+	color: #28a9e0;
+}
+
+form.to-css3 textarea {
+	width: 300px;
+}
+
+form div {
+	margin: 10px;
+	clear: both;
+}
+
+label {
+	float: left;
+	width: 135px;
+}
+
+input[type=text] {
+	width: 50px;
+}
+
+input[type=submit],
+input[type=reset],
+input[type=button] {
+	border-radius: 5px;
+	padding: 5px;
+	font-size: 0.90em;
+}
+
+input[type=submit] {
+	margin: 0 5px;
+	background: #0070ba; /* Old browsers */
+	background: -moz-linear-gradient(top,  #0070ba 0%, #28a9e0 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0070ba), color-stop(100%,#28a9e0)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #0070ba 0%,#28a9e0 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #0070ba 0%,#28a9e0 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #0070ba 0%,#28a9e0 100%); /* IE10+ */
+	background: linear-gradient(top,  #0070ba 0%,#28a9e0 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0070ba', endColorstr='#28a9e0',GradientType=0 ); /* IE6-9 */
+	color: #fff;
+	border: 1px solid #0070ba;
+	float: right;
+	-moz-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.30);
+	-webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.30);
+	-o-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.30);
+	box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.30); 
+}
+
+input[type=reset],
+input[type=button] {
+	background: #eeeeee; /* Old browsers */
+	background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* IE10+ */
+	background: linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+	color: #333;
+	border: 1px solid #666;
+}
+
+.output {
+  font-family:Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
+  font-size:15px;
+}
+
+.css-inset {
+	white-space: pre;
+}
+
+.output .generated,
+.updated {
+	display: none;
+
+}
+
+.moz-generated,
+.webkit-generated,
+.o-generated {
+	display:none;
+}
+
+.output .syntax {
+	color: #666;
+}
+
+#about {
+	float: right;
+	width: 200px;
+	margin: 20px;
+	padding-top: 40px;
+	color: #333;
+}
+
+.update {
+	margin-top: 10px;
+	color: #f90;
+	font-size: 12px;
+}
+
+.update ul {
+	padding: 0 0 0 20px;
+}
+
+.update ul li {
+	padding: 0 0 10px 0;
+	line-height: 1.4em;
+}
+
+.update a {
+	color: #f90;
+	text-decoration: none;
+	border-bottom: 1px dotted #f90;
+}
+
+span.radio {
+	display: inline-block;
+	width: 50px;
+}
+
+hr {
+	clear: both;
+	margin: 10px 0;
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.text-ignore {
+	display: none;
+}
+
+
+@media all and (max-width: 630px) {
+  #about {
+   	float: left;
+   	width: 325px; 
+   	padding-top: 0;
+  }
+}
+
+cite {
+	color: #28a9e0;
+	line-height: 1em;
+}
+
+form div span {
+	color: #666;
+	font-size: 0.90em;
+}
+
+#footer {
+	margin: 40px 20px;
+	font-size: 0.75em;
+}
+
+#footer img {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+.share-this {
+	text-align: center;
+	margin-top: 40px;
+}
+
+.flattr {
+	margin-top: 10px;
+	text-align: center;
+}
+

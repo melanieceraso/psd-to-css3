@@ -1,0 +1,94 @@
+/*---------------------------------------------------------------- 	
+CSS for Photoshop to CSS3 Shadows
+Melanie deDon, Web Designer/Front-end Web Developer (melanie@dedon.me)  
+v2.0 | April 2013 
+------------------------------------------------------------------*/
+
+body {
+	background-color: #fff;
+}
+
+a {
+	color: #06c;
+}
+
+
+body .row-fluid:first-child {
+	margin-top: 40px;
+}
+
+.navbar .brand {
+	margin-left: 0;
+}
+
+.content {
+	padding: 20px 20px 0;
+}
+
+.page-header h1 {
+	margin: 0 20px;
+}
+
+.hubbinz {
+	height: 20px;
+	text-align: right;
+	padding-right: 10px;
+}
+
+.maths-txt {
+	display: none;
+	color: #28a9e0;
+}
+
+.row-fluid .span1 {
+	padding-top: 15em;
+}
+
+.row-fluid .span1 a {
+	margin-bottom: 10px;
+}
+
+legend {
+	font-size: 15px;
+	color: #28a9e0;
+	border-bottom: 0;
+}
+
+h3 {
+	font-size: 15px;
+	font-weight: normal;
+	color: #28a9e0;
+}
+
+.form-horizontal .control-label {
+	width: 115px;
+}
+
+.form-horizontal .controls {
+	margin-left: 135px;
+}
+
+.output {
+	margin-bottom: 10px;
+	padding: 20px;
+	background-color: #eaeaea;
+	border: 1px solid #28a9e0;
+	font-family:Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
+  	font-size: 15px;
+}
+
+.css-inset {
+	white-space: pre;
+}
+
+.output .generated,
+.updated {
+	display: none;
+
+}
+
+.output .syntax {
+	color: #666;
+}
+
+

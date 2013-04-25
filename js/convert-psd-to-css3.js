@@ -3,8 +3,8 @@ jQuery(document).ready(function($) {
 		if ($.browser.msie && parseInt($.browser.version) > 9) {
 			$("html").addClass("ie gte-ie10");
 		}
-		
-		function doMaths() {
+
+		function doCSSMaths() {
 			var opacity = $('input[name="opacity"]').val();
 			var ang = $('input[name="angle"]').val();
 			var dist = $('input[name="distance"]').val();
@@ -55,6 +55,11 @@ jQuery(document).ready(function($) {
 			}
 		};
 
+		/* function doPSMaths() {
+			var opacity = $('input[name="css-opacity"]').val() * 100;
+			$('input[name="opacity"]').val(opacity);
+		} */
+
 		function doCodes() {
 			var inset = $('select[name="inset"]').val();
 			var offsetx = $('input[name="offset-x"]').val();
@@ -80,39 +85,24 @@ jQuery(document).ready(function($) {
 			}
 		};
 
-		// Convert PSD settings to CSS3 and show output
-		$("form.from-ps").submit(function() {
-			doMaths();
+		// Convert PS settings to CSS3 and show output
+		$('a.generate-css').click(function() {
+			doCSSMaths();
 			$('.output .syntax').hide();
 			$('.output .generated').fadeIn();
-
-			$('.maths-txt').fadeIn(300, function() {
-	        	$('.maths-txt').fadeOut(1000);
-	      	});	 
 		  	return false;
 		});
 
-		//Reset all Forms
-		/*$('input[type="reset"]').click(function() {
-			$('.output .generated').hide();
-		  	$('.output .moz-generated').hide();
-		  	$('.output .webkit-generated').hide();
-		  	$('.output .o-generated').hide();
-		  	$('.updated').hide();
-			$('.output .syntax').fadeIn();
-			$('input[name="inset"][value="No"]').attr('checked', true);
-		  	$('input[name="offset-x"]').val("");
-		  	$('input[name="offset-y"]').val("");
-		  	$('input[name="spread-radius"]').val("");
-		  	$('input[name="blur-radius"]').val("");
-		  	$('input[name="css-opacity"]').val("");
-		  	$('input[name=add-moz]').attr('checked', false);
-		  	$('input[name=add-webkit]').attr('checked', false);
-		  	$('input[name=add-o]').attr('checked', false);
-		});
+		// Convert CSS settings to PS and show output
+		/* $('a.generate-ps').click(function() {
+			doPSMaths();
+			//$('.output .syntax').hide();
+			//$('.output .generated').fadeIn();
+		  	return false;
+		}); */
 
-		//Clear PSD Settings
-		$('input.clear').click(function() {
+		//Clear Ps Settings
+		$('a.clear-btn').click(function() {
 			$('.output .generated').hide();
 			$('.output .syntax').fadeIn();
 			$('input[name="red"]').val("0");
@@ -123,19 +113,19 @@ jQuery(document).ready(function($) {
 			$('input[name="distance"]').val("0");
 			$('input[name="spread"]').val("0");
 			$('input[name="size"]').val("0");
-		}); */
+			doCSSMaths();
+		}); 
+
+		$('a.css3-prop-btn').click(function() {
+			$('.output .syntax').toggle();
+			$('.output .generated').toggle();
+		  	return false;
+		});
+
 
 		//watch for form changes
 		/* $('.watch').change(function() {
 			$('.updated').fadeIn();
 		});*/
-
-		// Update CSS Codes
-		$("form.css3-box-shadow").submit(function() {
-			doCodes();
-			$('.output .syntax').hide();
-			$('.output .generated').fadeIn();
-		  	return false;
-		});
 
 	});

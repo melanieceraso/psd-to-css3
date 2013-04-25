@@ -13,8 +13,8 @@ a {
 }
 
 
-body .row-fluid:first-child {
-	margin-top: 40px;
+body {
+	padding-top: 40px;
 }
 
 .navbar .brand {
@@ -40,11 +40,12 @@ body .row-fluid:first-child {
 	color: #28a9e0;
 }
 
-.row-fluid .span1 {
-	padding-top: 15em;
+.row-fluid .convert-btns {
+	padding-top: 200px;
+	text-align: center;
 }
 
-.row-fluid .span1 a {
+.row-fluid .convert-btns a {
 	margin-bottom: 10px;
 }
 
@@ -89,6 +90,10 @@ h3 {
 
 .output .syntax {
 	color: #666;
+}
+
+#footer {
+	margin: 40px 0;
 }
 
 

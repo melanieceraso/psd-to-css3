@@ -98,6 +98,11 @@ h3 {
 	margin: 40px 0;
 }
 
+.donate-btn {
+	text-align: center;
+	margin-top: 20px;
+}
+
 @media (min-width: 768px) and (max-width: 979px) { 
 	body {
 		padding-top: 0;

@@ -35,7 +35,7 @@ jQuery(document).ready(function($) {
 
 			//spread-radius equals the Photoshop Size multiplied by the Photoshop Spread percentage
 			var spreadrad = size * spread/100;
-			$('input[name="spread"]').val(spreadrad);
+			$('input[name="spreadrad"]').val(spreadrad);
 			$('.output .spread-radius').text(spreadrad);
 
 			//blur-radius is equal to the Photoshop Size minus the <spread-radius>
@@ -55,10 +55,34 @@ jQuery(document).ready(function($) {
 			}
 		};
 
-		/* function doPSMaths() {
-			var opacity = $('input[name="css-opacity"]').val() * 100;
+		function doPSMaths() {
+			//get css values
+			var offsetx = $('input[name="offset-x"]').val(); // horizontal length
+			var offsety = $('input[name="offset-y"]').val(); // vertical length
+			var blurrad = $('input[name="blur-radius"]').val(); // blur radius
+			var spreadrad = $('input[name="spreadrad"]').val(); // spread
+			var cssopacity = $('input[name="css-opacity"]').val() // opacity
+
+			// ps opacity = css opacity * 100
+			var opacity = cssopacity * 100;
 			$('input[name="opacity"]').val(opacity);
-		} */
+
+			// distance = √ ((offset-x)^2 + (offset-y)^2)
+			var dist = Math.sqrt( (Math.pow(offsetx,2)) + (Math.pow(offsety,2)) );
+			$('input[name="distance"]').val(dist);
+			
+			// angle = arctan(y-offset/x-offset)
+			var ang = Math.atan(offsety/offsetx);
+			$('input[name="angle"]').val(ang);
+
+			// spread = (spread radius/(spread radius + blur radius)) * 100
+			var spread = (spreadrad/(spreadrad + blurrad)) * 100;
+			$('input[name="spread"]').val(spread);
+
+			// size = spread radius + blur radius
+			var size = (spreadrad + blurrad);
+			$('input[name="size"]').val(size);
+		} 
 
 		function doCodes() {
 			var inset = $('select[name="inset"]').val();
@@ -94,12 +118,12 @@ jQuery(document).ready(function($) {
 		});
 
 		// Convert CSS settings to PS and show output
-		/* $('a.generate-ps').click(function() {
+		$('a.generate-ps').click(function() {
 			doPSMaths();
 			//$('.output .syntax').hide();
 			//$('.output .generated').fadeIn();
 		  	return false;
-		}); */
+		}); 
 
 		//Set Default Ps Settings
 		$('a.set-ps-default').click(function() {

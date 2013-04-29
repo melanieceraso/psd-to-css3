@@ -101,24 +101,30 @@ jQuery(document).ready(function($) {
 		  	return false;
 		}); */
 
-		//Clear Ps Settings
-		$('a.clear-btn').click(function() {
+		//Set Default Ps Settings
+		$('a.set-ps-default').click(function() {
 			$('.output .generated').hide();
 			$('.output .syntax').fadeIn();
 			$('input[name="red"]').val("0");
 			$('input[name="green"]').val("0");
 			$('input[name="blue"]').val("0");
-			$('input[name="opacity"]').val("0");
-			$('input[name="angle"]').val("0");
-			$('input[name="distance"]').val("0");
+			$('input[name="opacity"]').val("75");
+			$('input[name="angle"]').val("120");
+			$('input[name="distance"]').val("5");
 			$('input[name="spread"]').val("0");
-			$('input[name="size"]').val("0");
+			$('input[name="size"]').val("5");
 			doCSSMaths();
+			$('.output .syntax').hide();
+			$('.output .generated').fadeIn();
+
 		}); 
 
-		$('a.css3-prop-btn').click(function() {
-			$('.output .syntax').toggle();
-			$('.output .generated').toggle();
+		
+		$('a.clear-btn').click(function() {
+			$('form.from-ps')[0].reset();
+			$('form.css3-box-shadow')[0].reset();
+			$('.output .generated').hide();
+			$('.output .syntax').fadeIn();
 		  	return false;
 		});
 
@@ -127,5 +133,12 @@ jQuery(document).ready(function($) {
 		/* $('.watch').change(function() {
 			$('.updated').fadeIn();
 		});*/
+
+		$(".show-syntax").popover({
+			placement: "right",
+			html: "true",
+			trigger: "click",
+			content: "box-shadow: offset-x offset-y blur-radius spread-radius rgba(0, 0, 0, opacity) inset;<br><br>text-shadow: offset-x offset-y blur-radius rgba(0,0,0 opacity);"
+		});
 
 	});

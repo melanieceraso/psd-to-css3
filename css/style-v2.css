@@ -50,13 +50,15 @@ body {
 }
 
 legend {
-	font-size: 15px;
+	font-size: 18px;
+	margin-bottom: 0;
 	color: #28a9e0;
 	border-bottom: 0;
 }
 
 h3 {
-	font-size: 15px;
+	font-size: 18px;
+	margin-bottom: 0;
 	font-weight: normal;
 	color: #28a9e0;
 }
@@ -94,6 +96,12 @@ h3 {
 
 #footer {
 	margin: 40px 0;
+}
+
+@media (min-width: 768px) and (max-width: 979px) { 
+	body {
+		padding-top: 0;
+	}
 }
 
 

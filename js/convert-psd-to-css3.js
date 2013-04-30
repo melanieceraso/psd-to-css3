@@ -48,12 +48,39 @@ jQuery(document).ready(function($) {
 			$('.output .g').text(g);
 			$('.output .b').text(b);
 
-			if ($('input[name="inset"]:checked').val() == 'Yes') {	       
+			var ins = $('select[name="inset"]').val();
+			if ( ins == 'Yes') {  //adds inset to the output code if selected	       
 				$('.output .css-inset').text(' inset').css('display','inline');
 			} else {
 				$('.output .css-inset').css('display','none');
 			}
+
+			updatePreview();
 		};
+
+		function updatePreview() {
+			var offsetx = $('input[name="offset-x"]').val(); // horizontal length
+			var offsety = $('input[name="offset-y"]').val(); // vertical length
+			var blurrad = $('input[name="blur-radius"]').val(); // blur radius
+			var spreadrad = $('input[name="spreadrad"]').val(); // spread
+			var cssopacity = $('input[name="css-opacity"]').val() // opacity
+			var r = $('input[name="red"]').val();
+			var g = $('input[name="green"]').val();
+			var b = $('input[name="blue"]').val();
+			var ins = $('select[name="inset"]').val();
+
+			//update css preview
+			if (ins == 'Yes') {	//check to see if inset is selected to determine preview value       
+				var boxshadowval = offsetx + "px " + offsety + "px " + blurrad + "px " + spreadrad + "px rgba(" + r + ", " + g + ", " + b + ", " + cssopacity + ") inset";
+			} else {
+				var boxshadowval = offsetx + "px " + offsety + "px " + blurrad + "px " + spreadrad + "px rgba(" + r + ", " + g + ", " + b + ", " + cssopacity + ")";
+			}
+
+			$('.box-shadow-preview').css('boxShadow', boxshadowval); 
+
+			var textshadowval = offsetx + "px " + offsety + "px " + blurrad + "px rgba(" + r + ", " + g + ", " + b + ", " + cssopacity + ")";
+			$('.text-shadow-preview').css('textShadow', textshadowval);	
+		}
 
 		function doPSMaths() {
 			//get css values
@@ -107,7 +134,7 @@ jQuery(document).ready(function($) {
 			} else {
 				$('.output .css-inset').css('display','none');
 			}
-		};
+		}; 
 
 		// Convert PS settings to CSS3 and show output
 		$('a.generate-css').click(function() {
@@ -143,7 +170,6 @@ jQuery(document).ready(function($) {
 
 		}); 
 
-		
 		$('a.clear-btn').click(function() {
 			$('form.from-ps')[0].reset();
 			$('form.css3-box-shadow')[0].reset();
@@ -152,17 +178,10 @@ jQuery(document).ready(function($) {
 		  	return false;
 		});
 
-
-		//watch for form changes
-		/* $('.watch').change(function() {
-			$('.updated').fadeIn();
-		});*/
-
-		$(".show-syntax").popover({
-			placement: "right",
-			html: "true",
-			trigger: "click",
-			content: "box-shadow: offset-x offset-y blur-radius spread-radius rgba(0, 0, 0, opacity) inset;<br><br>text-shadow: offset-x offset-y blur-radius rgba(0,0,0 opacity);"
+		//watch for form changes (on the css code)
+		$('.watch').change(function() {
+			doCodes();
+			updatePreview();
 		});
 
 	});

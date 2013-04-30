@@ -71,8 +71,8 @@ jQuery(document).ready(function($) {
 			var dist = Math.sqrt( (Math.pow(offsetx,2)) + (Math.pow(offsety,2)) );
 			$('input[name="distance"]').val(dist);
 			
-			// angle = arctan(y-offset/x-offset)
-			var ang = Math.atan(offsety/offsetx);
+			// angle = arctan(y-offset/x-offset) 
+			var ang = Math.atan( parseInt(offsety)/parseInt(offsetx) );
 			$('input[name="angle"]').val(ang);
 
 			// spread = (spread radius/(spread radius + blur radius)) * 100
@@ -80,7 +80,7 @@ jQuery(document).ready(function($) {
 			$('input[name="spread"]').val(spread);
 
 			// size = spread radius + blur radius
-			var size = (spreadrad + blurrad);
+			var size = parseInt(spreadrad) + parseInt(blurrad);
 			$('input[name="size"]').val(size);
 		} 
 

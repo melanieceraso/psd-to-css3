@@ -99,8 +99,9 @@ jQuery(document).ready(function($) {
 			$('input[name="distance"]').val(dist);
 			
 			// angle = arctan(y-offset/x-offset) 
-			var ang = Math.atan( parseInt(offsety)/parseInt(offsetx) );
-			$('input[name="angle"]').val(ang);
+			var ang = Math.atan( parseInt(offsety)/parseInt(offsetx) ); //finds angle in radians
+			var angdeg = ((ang * 180)/3.14);   //convert radians to degrees
+			$('input[name="angle"]').val(angdeg);
 
 			// spread = (spread radius/(spread radius + blur radius)) * 100
 			var spread = (spreadrad/(spreadrad + blurrad)) * 100;

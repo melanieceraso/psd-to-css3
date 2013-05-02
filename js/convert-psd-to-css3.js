@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
 
 		function doCSSMaths() {
 			var opacity = $('input[name="opacity"]').val();
-			var ang = $('input[name="angle"]').val();
+			var angdegree = $('input[name="angle"]').val();
 			var dist = $('input[name="distance"]').val();
 			var spread = $('input[name="spread"]').val();
 			var size = $('input[name="size"]').val();
@@ -21,7 +21,7 @@ jQuery(document).ready(function($) {
 				$('.output .css-opacity').text(cssopacity);
 
 			// Angle == Θ
-			var ang = (180 - ang) * 3.14 / 180; //convert to radians.
+			var ang = (180 - angdegree) * 3.14 / 180; //convert to radians.
 
 			// vertical shadow: offset-y = Sin(Θ) * Hypotenuse
 			var offsety = Math.round(Math.sin(ang) * dist); 
@@ -100,7 +100,9 @@ jQuery(document).ready(function($) {
 			
 			// angle = arctan(y-offset/x-offset) 
 			var ang = Math.atan( parseInt(offsety)/parseInt(offsetx) ); //finds angle in radians
-			var angdeg = ((ang * 180)/3.14);   //convert radians to degrees
+			
+			//var angdeg = ((ang * 180)/3.14) + 180;  //convert radians to degrees
+
 			$('input[name="angle"]').val(angdeg);
 
 			// spread = (spread radius/(spread radius + blur radius)) * 100

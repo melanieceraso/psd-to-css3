@@ -1,6 +1,7 @@
 @import "variables";
 @import "mixins";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
 
 
 body {
@@ -9,13 +10,20 @@ body {
   font-size: 16px;
   color: $gray;
   background: $feather-gray url("../img/evie-shaffer-505135-unsplash.jpg") no-repeat bottom left;
-  background-size: cover;
+  background-size: 200%;
+  @include tablet {
+    background-size: contain;
+  }
 }
 
 a {
   color: $soft-blue;
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+  }
 }
-
 section.top,
 section.bottom {
   display: flex;
@@ -24,18 +32,16 @@ section.bottom {
     display: grid;
     grid-template-columns: 30% 30% 30%;
     grid-template-areas: "left middle right";
-    grid-column-gap: 15px;
+    grid-column-gap: 45px;
   }
 }
-
 section.top {
   background-color: $dark-gray;
   padding: 30px;
 }
-
 section.bottom {
-  grid-template-columns: 60% 30%;
-  grid-template-areas: "output .";
+  grid-template-columns: 100%;
+  grid-template-areas: "output";
 }
 
 .from-ps {
@@ -56,8 +62,15 @@ section.bottom {
   margin-bottom: 30px;
   font-size: 14px;
   color: $light-blue;
-  a {
-    color: $soft-blue;
+  border-top: 1px solid $dark-gray;
+  border-bottom: 1px solid $medium-gray;
+  border-left: 0;
+  padding: 15px;
+  @include tablet {
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 1px solid $medium-gray;
+    padding-left: 45px;
   }
   .social-links {
     a {
@@ -69,11 +82,22 @@ section.bottom {
       }
     }
   }
+  h4 {
+    text-transform: uppercase;
+  }
 }
 
 .generated-css {
   grid-area: output;
   padding: 30px;
+  background-color: $dark-gray;
+  margin: 45px 30px;
+  .output {
+    font-family: 'Anonymous Pro', monospace;
+    font-size:15px;
+    line-height: 1.4em;
+    color: $light-gray;
+  }
 }
 
 header {
@@ -83,6 +107,7 @@ header {
   h1 {
     font-size: 20px;
     color: $soft-blue;
+    font-weight: normal;
     text-transform: uppercase;
     margin: 0;
     @include tablet {
@@ -93,6 +118,7 @@ header {
     color: $light-blue;
     font-size: 18px;
     margin: 0;
+    font-weight: normal;
     @include tablet {
       font-size: 24px;
     }
@@ -101,4 +127,64 @@ header {
 footer {
   margin: 0;
   padding: 30px;
+  background: rgba(52,52,52,0.85);
+  font-size: 12px;
+  color: $light-gray;
+}
+
+h3 {
+  color: $soft-blue;
+  margin: 0 0 30px 0;
+  font-weight: normal;
+}
+
+/* Form Styling */
+
+form {
+  padding: 15px;
+  div {
+   display: flex;
+   justify-content: flex-start;
+   margin: 7.5px 0;
+   label {
+     width: 50%;
+   }
+   span {
+     color: $medium-gray;
+     &.radio {
+       width: 70px;
+     }
+   }
+   &.buttons {
+     margin-top: 30px;
+   }
+  }
+  input[type=text] {
+   width: 50px;
+   margin-right: 10px;
+   border: 0;
+   padding: 5px;
+   background-color: rgba(255,255,255,.1);
+   color: $light-gray;
+  }
+  input[type=submit],
+  input[type=reset],
+  input[type=button] {
+    border: 1px solid $soft-blue;
+    background-color: $dark-gray;
+    color: $soft-blue;
+    padding: 10px;
+    font-size: 14px;
+    margin-right: 10px;
+    outline-style: none;
+  }
+  input[type=submit] {
+    background-color: $soft-blue;
+    color: $dark-gray;
+  }
+}
+
+.output .generated,
+.updated {
+  display: none;
 }

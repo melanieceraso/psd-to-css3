@@ -1,14 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Anonymous+Pro");
 body {
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   color: #999;
   background: #E2E5EA url("../img/evie-shaffer-505135-unsplash.jpg") no-repeat bottom left;
-  background-size: cover; }
+  background-size: 200%; }
+  @media (min-width: 768px) {
+    body {
+      background-size: contain; } }
 
 a {
   color: #96C7DB; }
+  a:hover, a:focus, a:active {
+    color: #fff; }
 
 section.top,
 section.bottom {
@@ -20,15 +26,15 @@ section.bottom {
       display: grid;
       grid-template-columns: 30% 30% 30%;
       grid-template-areas: "left middle right";
-      grid-column-gap: 15px; } }
+      grid-column-gap: 45px; } }
 
 section.top {
   background-color: #343434;
   padding: 30px; }
 
 section.bottom {
-  grid-template-columns: 60% 30%;
-  grid-template-areas: "output ."; }
+  grid-template-columns: 100%;
+  grid-template-areas: "output"; }
 
 .from-ps {
   grid-area: left;
@@ -45,19 +51,36 @@ section.bottom {
   order: 1;
   margin-bottom: 30px;
   font-size: 14px;
-  color: #CBDDE4; }
-  #about a {
-    color: #96C7DB; }
+  color: #CBDDE4;
+  border-top: 1px solid #343434;
+  border-bottom: 1px solid #666;
+  border-left: 0;
+  padding: 15px; }
+  @media (min-width: 768px) {
+    #about {
+      border-top: 0;
+      border-bottom: 0;
+      border-left: 1px solid #666;
+      padding-left: 45px; } }
   #about .social-links a {
     text-decoration: none; }
     #about .social-links a .svg {
       display: inline-block;
       max-width: 24px;
       margin: 0 5px 0 0; }
+  #about h4 {
+    text-transform: uppercase; }
 
 .generated-css {
   grid-area: output;
-  padding: 30px; }
+  padding: 30px;
+  background-color: #343434;
+  margin: 45px 30px; }
+  .generated-css .output {
+    font-family: 'Anonymous Pro', monospace;
+    font-size: 15px;
+    line-height: 1.4em;
+    color: #e1e1e1; }
 
 header {
   background-color: #343434;
@@ -66,6 +89,7 @@ header {
   header h1 {
     font-size: 20px;
     color: #96C7DB;
+    font-weight: normal;
     text-transform: uppercase;
     margin: 0; }
     @media (min-width: 768px) {
@@ -74,13 +98,62 @@ header {
   header h2 {
     color: #CBDDE4;
     font-size: 18px;
-    margin: 0; }
+    margin: 0;
+    font-weight: normal; }
     @media (min-width: 768px) {
       header h2 {
         font-size: 24px; } }
 
 footer {
   margin: 0;
-  padding: 30px; }
+  padding: 30px;
+  background: rgba(52, 52, 52, 0.85);
+  font-size: 12px;
+  color: #e1e1e1; }
+
+h3 {
+  color: #96C7DB;
+  margin: 0 0 30px 0;
+  font-weight: normal; }
+
+/* Form Styling */
+form {
+  padding: 15px; }
+  form div {
+    display: flex;
+    justify-content: flex-start;
+    margin: 7.5px 0; }
+    form div label {
+      width: 50%; }
+    form div span {
+      color: #666; }
+      form div span.radio {
+        width: 70px; }
+    form div.buttons {
+      margin-top: 30px; }
+  form input[type=text] {
+    width: 50px;
+    margin-right: 10px;
+    border: 0;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #e1e1e1; }
+  form input[type=submit],
+  form input[type=reset],
+  form input[type=button] {
+    border: 1px solid #96C7DB;
+    background-color: #343434;
+    color: #96C7DB;
+    padding: 10px;
+    font-size: 14px;
+    margin-right: 10px;
+    outline-style: none; }
+  form input[type=submit] {
+    background-color: #96C7DB;
+    color: #343434; }
+
+.output .generated,
+.updated {
+  display: none; }
 
 /*# sourceMappingURL=style-v2.css.map */

@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+body {
+  padding: 30px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px; }
+
+section.top,
+section.bottom {
+  display: flex;
+  flex-direction: column; }
+  @media (min-width: 768px) {
+    section.top,
+    section.bottom {
+      display: grid;
+      grid-template-columns: 30% 30% 30%;
+      grid-template-areas: "left middle right";
+      grid-column-gap: 15px;
+      grid-row-gap: 15px; } }
+
+section.bottom {
+  grid-template-columns: 60% 30%;
+  grid-template-areas: "output ."; }
+
+.from-ps {
+  grid-area: left;
+  order: 2;
+  margin-bottom: 30px; }
+
+.css3-box-shadow {
+  grid-area: middle;
+  order: 3;
+  margin-bottom: 30px; }
+
+#about {
+  grid-area: right;
+  order: 1;
+  margin-bottom: 30px; }
+
+.generated-css {
+  grid-area: output; }
+
+header {
+  margin-bottom: 45px; }
+
+footer {
+  margin-top: 45px; }
+
+/*# sourceMappingURL=style-v2.css.map */

@@ -11,12 +11,8 @@
 	<meta name="description" content="Convert your Photoshop drop shadows into CSS3 box and text shadows.">
 	<meta name="keywords" content="Adobe, Photoshop, Cascading Style Sheets, CSS, CSS3, HTML, HTML5, drop shadow, box shadow, text shadow, web standards, photo shop">
 	<script src="js/jquery-1.7.1.min.js"></script>
-	<script src="js/convert-psd-to-css3.js"></script>
 	<script src="js/replace-svg.js"></script>
 
-	<script type="text/javascript">var switchTo5x=true;</script>
-	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-	<script type="text/javascript">stLight.options({publisher: "3e460cd8-2ba2-42c2-a074-631c62e986cc"}); </script>
 	<script>
 	jQuery(document).ready(function($) {	
 		//detect for IE10
@@ -107,7 +103,7 @@
 
 			$('.maths-txt').fadeIn(300, function() {
 	        	$('.maths-txt').fadeOut(1000);
-	      	});	 
+	      	});
 		  	return false;
 		});
 
@@ -160,6 +156,7 @@
 	});
 	</script>
 	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/prettify.css">
 	<link rel="stylesheet" href="css/style-v2.css">
 </head>
 
@@ -170,88 +167,81 @@
 	</header>
 	<section class="top">
 		<form class="from-ps" method="post">
-			<fieldset>
-				<legend>Photoshop Drop Shadow Structure</legend>
-				<div>
-					<label>Color</label>
-					<input type="text" name="red" value="0"> <span>R</span>
-				</div>
-				<div>
-					<label>&nbsp;</label>
-					<input type="text" name="green" value="0"> <span>G</span>
-				</div>
-				<div>
-					<label>&nbsp;</label>
-					<input type="text" name="blue" value="0"> <span>B</span>
-				</div>
-				<div>
-					<label>Opacity</label>
-					<input type="text" name="opacity" value="75"> <span>%</span>
-				</div>
-				<div>
-					<label>Angle</label>
-					<input type="text" name="angle" value="120"> <span>&deg;</span>
-				</div>
-				<div>
-					<label>Distance</label>
-					<input type="text" name="distance" value="5"> <span>px</span>
-				</div>
-				<div>
-					<label>Spread</label>
-					<input type="text" name="spread" value="0"> <span>%</span>
-				</div>
-				<div>
-					<label>Size</label>
-					<input type="text" name="size" value="5"> <span>px</span>
-				</div>
-				<div class="hubbinz">
-					<span class="maths-txt">Do all the Maths!</span>
-				</div>
-				<div class="buttons">
-					<input type="button" class="clear" value="Clear">
-					<input type="reset" value="PS Default">
-					<input type="submit" value="Convert to CSS3" class="maths">
-				</div>
-			</fieldset>
+			<h3>Photoshop Drop Shadow Structure</h3>
+			<div>
+				<label>Color</label>
+				<input type="text" name="red" value="0"> <span>R</span>
+			</div>
+			<div>
+				<label>&nbsp;</label>
+				<input type="text" name="green" value="0"> <span>G</span>
+			</div>
+			<div>
+				<label>&nbsp;</label>
+				<input type="text" name="blue" value="0"> <span>B</span>
+			</div>
+			<div>
+				<label>Opacity</label>
+				<input type="text" name="opacity" value="75"> <span>%</span>
+			</div>
+			<div>
+				<label>Angle</label>
+				<input type="text" name="angle" value="120"> <span>&deg;</span>
+			</div>
+			<div>
+				<label>Distance</label>
+				<input type="text" name="distance" value="5"> <span>px</span>
+			</div>
+			<div>
+				<label>Spread</label>
+				<input type="text" name="spread" value="0"> <span>%</span>
+			</div>
+			<div>
+				<label>Size</label>
+				<input type="text" name="size" value="5"> <span>px</span>
+			</div>
+			<div class="buttons">
+				<input type="button" class="clear" value="Clear">
+				<input type="reset" value="PS Default">
+				<input type="submit" value="Convert to CSS3" class="maths">
+			</div>
 		</form>
 
 		<form class="css3-box-shadow" method="post">
-			<fieldset>
-				<legend>CSS3 Syntax</legend>
-				<div>
-					<label>Inset?</label>
-					<span class="radio"><input class="watch" type="radio" name="inset" value="No" checked> No</span>
-					<span class="radio"><input class="watch" type="radio" name="inset" value="Yes"> Yes</span>
-				</div>
-				<div>
-					<label>Horizontal Length</label>
-					<input type="text" name="offset-x" class="watch"> <span>px</span>
-				</div>
-				<div>
-					<label>Vertical Length</label>
-					<input type="text" name="offset-y" class="watch"> <span>px</span>
-				</div>
-				<div>
-					<label>Blur Radius</label>
-					<input type="text" name="blur-radius" class="watch"> <span>px</span>
-				</div>
-				<div>
-					<label>Spread</label>
-					<input type="text" name="spread" class="watch"> <span>px</span>
-				</div>
-				<div>
-					<label>Opacity</label>
-					<input type="text" name="css-opacity" class="watch">
-				</div>
-				<div class="updated">
-					<input type="reset" value="Reset">
-					<input type="submit" value="Update CSS3 Code">
-				</div>
-			</fieldset>
+			<h3>CSS3 Syntax</h3>
+			<div>
+				<label>Inset?</label>
+				<span class="radio"><input class="watch" type="radio" name="inset" value="No" checked> No</span>
+				<span class="radio"><input class="watch" type="radio" name="inset" value="Yes"> Yes</span>
+			</div>
+			<div>
+				<label>Horizontal Length</label>
+				<input type="text" name="offset-x" class="watch"> <span>px</span>
+			</div>
+			<div>
+				<label>Vertical Length</label>
+				<input type="text" name="offset-y" class="watch"> <span>px</span>
+			</div>
+			<div>
+				<label>Blur Radius</label>
+				<input type="text" name="blur-radius" class="watch"> <span>px</span>
+			</div>
+			<div>
+				<label>Spread</label>
+				<input type="text" name="spread" class="watch"> <span>px</span>
+			</div>
+			<div>
+				<label>Opacity</label>
+				<input type="text" name="css-opacity" class="watch">
+			</div>
+			<div class="updated">
+				<input type="reset" value="Reset">
+				<input type="submit" value="Update CSS3 Code">
+			</div>
 		</form>
 		<div id="about">
 			<h4>About</h4>
-			<p>Adopted from the article, <a href="https://2012.heygrady.com/blog/2011/08/06/recreating-photoshop-drop-shadows-in-css3-and-compass/" target="_blank" title="Recreating Photoshop Drop Shadows in CSS3 and Compass">Recreating Photoshop Drop Shadows in CSS3 and Compass</a> by Grady Kuhnlinem, this online tool uses javascript to convert the CSS3 box and text shadows from Photoshop shadow values.</p>
+			<p>Adopted from the article, <a href="https://20d12.heygrady.com/blog/2011/08/06/recreating-photoshop-drop-shadows-in-css3-and-compass/" target="_blank" title="Recreating Photoshop Drop Shadows in CSS3 and Compass">Recreating Photoshop Drop Shadows in CSS3 and Compass</a> by Grady Kuhnlinem, this online tool uses javascript to convert the CSS3 box and text shadows from Photoshop shadow values.</p>
 
 			<p><a href="http://melanieseifert.com" target="_blank">Melanie Seifert</a><br /><small>Senior Web Designer/Front-end Developer<br />Minneapolis, Minnesota</small></p>
 			<p class="social-links">
@@ -299,7 +289,7 @@
 
 	<footer id="footer">
 		<p>
-			<a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nd/3.0/88x31.png" /></a> <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">Convert Photoshop to CSS3 Shadows</span> (v1) by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.melanieceraso.com/psd-to-css3" property="cc:attributionName" rel="cc:attributionURL">Melanie Seifert</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/">Creative Commons Attribution-NoDerivs 3.0 Unported License</a>.<br />Permissions beyond the scope of this license may be available at <a xmlns:cc="http://creativecommons.org/ns#" href="http://melaniededon.com/contact/" rel="cc:morePermissions">http://melanieseifert.com</a>.
+			<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">Convert Photoshop to CSS3 Shadows</span> (v2) by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.melanieceraso.com/psd-to-css3" property="cc:attributionName" rel="cc:attributionURL">Melanie Seifert</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/">Creative Commons Attribution-NoDerivs 3.0 Unported License</a>.<br />Permissions beyond the scope of this license may be available at <a xmlns:cc="http://creativecommons.org/ns#" href="http://melaniededon.com/contact/" rel="cc:morePermissions">http://melanieseifert.com</a>.
 		</p>
 		<p>
 			<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@evieshaffer?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Evie Shaffer"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Evie Shaffer</span></a>

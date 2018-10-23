@@ -1,8 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 body {
-  padding: 30px;
+  padding: 0;
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px; }
+  font-size: 16px;
+  color: #999;
+  background: #E2E5EA url("../img/evie-shaffer-505135-unsplash.jpg") no-repeat bottom left;
+  background-size: cover; }
+
+a {
+  color: #96C7DB; }
 
 section.top,
 section.bottom {
@@ -14,8 +20,11 @@ section.bottom {
       display: grid;
       grid-template-columns: 30% 30% 30%;
       grid-template-areas: "left middle right";
-      grid-column-gap: 15px;
-      grid-row-gap: 15px; } }
+      grid-column-gap: 15px; } }
+
+section.top {
+  background-color: #343434;
+  padding: 30px; }
 
 section.bottom {
   grid-template-columns: 60% 30%;
@@ -34,15 +43,44 @@ section.bottom {
 #about {
   grid-area: right;
   order: 1;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #CBDDE4; }
+  #about a {
+    color: #96C7DB; }
+  #about .social-links a {
+    text-decoration: none; }
+    #about .social-links a .svg {
+      display: inline-block;
+      max-width: 24px;
+      margin: 0 5px 0 0; }
 
 .generated-css {
-  grid-area: output; }
+  grid-area: output;
+  padding: 30px; }
 
 header {
-  margin-bottom: 45px; }
+  background-color: #343434;
+  margin: 0;
+  padding: 30px; }
+  header h1 {
+    font-size: 20px;
+    color: #96C7DB;
+    text-transform: uppercase;
+    margin: 0; }
+    @media (min-width: 768px) {
+      header h1 {
+        font-size: 28px; } }
+  header h2 {
+    color: #CBDDE4;
+    font-size: 18px;
+    margin: 0; }
+    @media (min-width: 768px) {
+      header h2 {
+        font-size: 24px; } }
 
 footer {
-  margin-top: 45px; }
+  margin: 0;
+  padding: 30px; }
 
 /*# sourceMappingURL=style-v2.css.map */

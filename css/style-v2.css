@@ -54,6 +54,7 @@ section.bottom {
   color: #CBDDE4;
   border-top: 1px solid #343434;
   border-bottom: 1px solid #666;
+  border-left: 0;
   padding: 15px; }
   @media (min-width: 768px) {
     #about {
@@ -67,6 +68,8 @@ section.bottom {
       display: inline-block;
       max-width: 24px;
       margin: 0 5px 0 0; }
+  #about h4 {
+    text-transform: uppercase; }
 
 .generated-css {
   grid-area: output;
@@ -76,7 +79,8 @@ section.bottom {
   .generated-css .output {
     font-family: 'Anonymous Pro', monospace;
     font-size: 15px;
-    line-height: 1.4em; }
+    line-height: 1.4em;
+    color: #e1e1e1; }
 
 header {
   background-color: #343434;

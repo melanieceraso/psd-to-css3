@@ -64,6 +64,7 @@ section.bottom {
   color: $light-blue;
   border-top: 1px solid $dark-gray;
   border-bottom: 1px solid $medium-gray;
+  border-left: 0;
   padding: 15px;
   @include tablet {
     border-top: 0;
@@ -81,6 +82,9 @@ section.bottom {
       }
     }
   }
+  h4 {
+    text-transform: uppercase;
+  }
 }
 
 .generated-css {
@@ -92,6 +96,7 @@ section.bottom {
     font-family: 'Anonymous Pro', monospace;
     font-size:15px;
     line-height: 1.4em;
+    color: $light-gray;
   }
 }
 
